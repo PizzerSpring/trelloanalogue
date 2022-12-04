@@ -8,15 +8,21 @@ const CommonContainer = styled.div`
     align-items: center;
     width: 80%;
     margin: 0 auto;
-    
+`
+
+const HomePage = styled.div`
+  background: linear-gradient(rgb(234, 230, 255), rgb(255, 255, 255)) no-repeat;
 `
 
 
 const Container = () => {
     return (
-        <CommonContainer>
-            <MainPage/>
-        </CommonContainer>
+        <HomePage>
+            <CommonContainer>
+                <MainPage/>
+            </CommonContainer>
+        </HomePage>
+
     );
 };
 
