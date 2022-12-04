@@ -52,6 +52,7 @@ const ButtonGet = styled.a`
 
 `
 const ButtonContainer = styled.div`
+    display: flex;
 
 `
 const HeaderNavContainer = styled.div`
