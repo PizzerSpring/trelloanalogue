@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Navigation from "./Navigation";
 import iconTrello from '../assets/images/icontrello.png';
+import {NavLink} from "react-router-dom";
 
 const HeaderNav = styled.header`
   display: flex;
@@ -29,7 +30,7 @@ const IconContainer = styled.div`
   margin-right: 10px;
 
 `
-const ButtonLogin = styled.a`
+const ButtonLogin = styled(NavLink)`
   display: inline-block;
   cursor: pointer;
   align-items: center;
@@ -76,7 +77,7 @@ const Header = () => {
                 <Navigation/>
             </HeaderNavContainer>
             <ButtonContainer>
-                <ButtonLogin href='#'>Войти</ButtonLogin>
+                <ButtonLogin to="/login">Войти</ButtonLogin>
                 <ButtonGet href='#'>Получить Trello бесплатно</ButtonGet>
             </ButtonContainer>
         </HeaderNav>

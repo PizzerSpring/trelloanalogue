@@ -4,14 +4,24 @@ import Header from "./components/HeaderNav";
 import Container from "./components/Container";
 import Login from "./components/Login";
 import WorkPageHeader from "./components/WorkPageHeader";
+import Workspace from "./components/Workspace";
+import WorkContainer from "./components/WorkContainer";
+import {HashRouter, Routes, Route, Navigate} from "react-router-dom";
+import AppContainer from "./components/AppContainer";
 
 function App() {
   return (
     <div className="App">
+      <HashRouter>
+          <Routes>
+              <Route path={'/'} element={<AppContainer/>}/>
+              <Route path={'/login'} element={<Login/>}/>
+          </Routes>
+      </HashRouter>
       {/*<Header/>
         <Container/>*/}
         {/*<Login/>*/}
-        <WorkPageHeader/>
+        {/*<WorkContainer/>*/}
     </div>
   );
 }

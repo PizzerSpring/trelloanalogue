@@ -128,8 +128,6 @@ const FooterContainer = styled.ul`
   min-width: 580px;
 `
 const Footer = styled.footer`
-    
-    
   
 `
 const Link = styled.li`
