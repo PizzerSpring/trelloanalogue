@@ -8,6 +8,7 @@ import {useSelector} from "react-redux";
 import {login} from "../redux/redux-thunks";
 import {setLogin} from "../redux/auth-reducer";
 import {HashRouter, Routes, Route, Navigate} from "react-router-dom";
+import {useFormik} from "formik";
 
 const LoginContainer = styled.div`
     display: flex;
@@ -87,7 +88,10 @@ const Password = styled.input`
   min-width: 350px;
   margin-bottom: 20px;
 `
-const Button = styled.a`
+
+const Button = styled.button.attrs({
+  type: 'submit'
+})`
   background: #CDD2D4;
   background: -webkit-gradient(linear, left top, left bottom, from(#CDD2D4), to(#C4C9CC));
   background: linear-gradient(to bottom, #CDD2D4 0%, #C4C9CC 100%);
@@ -165,6 +169,15 @@ const TitleIconContainer = styled.div`
 `
 
 const Login = () => {
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: ''
+        },
+        onSubmit: (values) => {
+            dispatch(login(values))
+        }
+    })
     const isLogedIn = useSelector<RootStateType, boolean>((state) =>
         state.auth.isLoggedIn
     );
@@ -183,11 +196,14 @@ const Login = () => {
                     <Icon></Icon>
                     <Title>Trello</Title>
                 </TitleIconContainer>
-                <Form>
+                <Form onSubmit={formik.handleSubmit}>
                     <TextTitle>Вход в Trello</TextTitle>
-                    <Email placeholder="Укажите адрес электронной почты"></Email>
-                    <Password placeholder="Укажите пароль"></Password>
-                    <Button onClick={() => {dispatch(setLogin(true))}}>Войти</Button>
+                    <Email placeholder="Укажите адрес электронной почты"
+                           {...formik.getFieldProps("email")}/>
+
+                    <Password placeholder="Укажите пароль"
+                              {...formik.getFieldProps("password")}/>
+                    <Button>Войти</Button>
                 </Form>
                 <Footer>
                     <Hr/>
