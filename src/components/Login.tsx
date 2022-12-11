@@ -3,6 +3,11 @@ import styled from 'styled-components';
 import bgLeftLoginIcon from '../assets/images/bgLeftLogin.png';
 import bgRightLoginIcon from '../assets/images/bgRightLogin.png';
 import iconTrello from  '../assets/images/icontrello.png';
+import {RootStateType, useTypedDispatch} from "../redux/store";
+import {useSelector} from "react-redux";
+import {login} from "../redux/redux-thunks";
+import {setLogin} from "../redux/auth-reducer";
+import {HashRouter, Routes, Route, Navigate} from "react-router-dom";
 
 const LoginContainer = styled.div`
     display: flex;
@@ -160,6 +165,14 @@ const TitleIconContainer = styled.div`
 `
 
 const Login = () => {
+    const isLogedIn = useSelector<RootStateType, boolean>((state) =>
+        state.auth.isLoggedIn
+    );
+
+    const dispatch = useTypedDispatch();
+    if(isLogedIn) {
+        return <Navigate to={'/work'}/>
+    }
     return (
         <LoginContainer>
             <BgLeftContainer>
@@ -174,7 +187,7 @@ const Login = () => {
                     <TextTitle>Вход в Trello</TextTitle>
                     <Email placeholder="Укажите адрес электронной почты"></Email>
                     <Password placeholder="Укажите пароль"></Password>
-                    <Button href="">Войти</Button>
+                    <Button onClick={() => {dispatch(setLogin(true))}}>Войти</Button>
                 </Form>
                 <Footer>
                     <Hr/>

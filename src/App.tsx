@@ -8,6 +8,8 @@ import Workspace from "./components/Workspace";
 import WorkContainer from "./components/WorkContainer";
 import {HashRouter, Routes, Route, Navigate} from "react-router-dom";
 import AppContainer from "./components/AppContainer";
+import {useSelector} from "react-redux";
+import {RootStateType} from "./redux/store";
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
           <Routes>
               <Route path={'/'} element={<AppContainer/>}/>
               <Route path={'/login'} element={<Login/>}/>
+              <Route path={'/work'} element={<WorkContainer/>}/>
           </Routes>
       </HashRouter>
       {/*<Header/>
