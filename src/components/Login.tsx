@@ -28,8 +28,16 @@ const Form = styled.form`
   box-shadow: rgba(0,0,0,0.1) 0 0 10px;
   text-align: center;
   margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
 `
 const FormContainer = styled.div`
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    
 `
 const Title = styled.h1`
     display: inline-block;
@@ -113,11 +121,38 @@ const BgRight = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 `
-const FooterContainer = styled.div`
+const FooterContainer = styled.ul`
+    list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  min-width: 580px;
 `
 const Footer = styled.footer`
+    
+    
+  
+`
+const Link = styled.li`
+`
+const LinkA = styled.a`
+  font-size: 14px;
+  text-decoration: none;
+  color: #5e6c84;
+`
+const FooterBottom = styled.div`
+    font-size: 14px;
+  color: #5e6c84;
+  text-align: center;
+  cursor: pointer;
 `
 const Hr = styled.hr`
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid hsl(0,0%,80%);
+  padding: 0;
+  width: 430px;
+  margin: 0 auto 30px;
 `
 
 const TitleIconContainer = styled.div`
@@ -143,10 +178,36 @@ const Login = () => {
                     <Password placeholder="Укажите пароль"></Password>
                     <Button href="">Войти</Button>
                 </Form>
-                <Hr/>
-                <FormContainer>
-                    <Footer></Footer>
-                </FormContainer>
+                <Footer>
+                    <Hr/>
+                    <FooterContainer>
+                        <Link>
+                            <LinkA href="#">Шаблоны</LinkA>
+                        </Link>
+                        <Link>
+                            <LinkA href="#">Цены</LinkA>
+                        </Link>
+                        <Link>
+                            <LinkA href="#">Приложения</LinkA>
+                        </Link>
+                        <Link>
+                            <LinkA href="#">Вакансии</LinkA>
+                        </Link>
+                        <Link>
+                            <LinkA href="#">Блог</LinkA>
+                        </Link>
+                        <Link>
+                            <LinkA href="#">Разработчики</LinkA>
+                        </Link>
+                        <Link>
+                            <LinkA href="#">О нас</LinkA>
+                        </Link>
+                        <Link>
+                            <LinkA href="#">Помощь</LinkA>
+                        </Link>
+                    </FooterContainer>
+                    <FooterBottom>Настройки файлов cookie</FooterBottom>
+                </Footer>
             </FormContainer>
             <BgRightContainer>
                 <BgRight></BgRight>
