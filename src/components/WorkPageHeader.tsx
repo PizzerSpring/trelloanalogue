@@ -56,6 +56,7 @@ const Search = styled.input`
   color: #fff;
 `
 const ProfileImg = styled.span`
+  cursor: pointer;
   display: inline-block;
   width: 34px;
   height: 34px;
@@ -87,7 +88,7 @@ const Question = styled.span`
 
 const WorkPageHeader = () => {
 
-    const [menu, setMenu] = useState(true);
+    const [menu, setMenu] = useState(false);
 
     return (
         <Header>
