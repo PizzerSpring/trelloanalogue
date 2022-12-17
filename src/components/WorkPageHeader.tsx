@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import WorkPageNav from "./WorkPageNav";
 import bellIcon from "../assets/images/bell.png";
 import headIcon from "../assets/images/head.png";
 import logoTrelloIcon from "../assets/images/logoTrello.png";
 import questionIcon from "../assets/images/question.png";
+import ProfileMenu from "./ProfileMenu";
 
 const Header = styled.header`
+  position: relative;
     display: flex;
   justify-content: space-between;
   padding: 5px 0;
@@ -81,7 +83,12 @@ const Question = styled.span`
   background-size: cover;
 `
 
+
+
 const WorkPageHeader = () => {
+
+    const [menu, setMenu] = useState(true);
+
     return (
         <Header>
             <HeaderContainer>
@@ -97,8 +104,9 @@ const WorkPageHeader = () => {
                 <Search type="text" placeholder="Поиск"/>
                 <BellImg></BellImg>
                 <Question></Question>
-                <ProfileImg></ProfileImg>
+                <ProfileImg onClick={() => {setMenu(!menu)}}></ProfileImg>
             </ButtonContainer>
+            <ProfileMenu menu={menu}/>
         </Header>
     );
 };

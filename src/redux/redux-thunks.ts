@@ -12,3 +12,12 @@ export const login = (data: LoginParamsType) => {
             })
     }
 }
+
+export const logout = () => {
+    return (dispatch: Dispatch) => {
+        authApi.logout()
+            .then(() => {
+                dispatch(setLogin(false));
+            })
+    }
+}

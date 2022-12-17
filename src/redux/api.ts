@@ -30,6 +30,8 @@ export const authApi = {
     log(data: LoginParamsType) {
         return instance.post<ResponseType<{userId?: number}>>('auth/login', data)
             .then(response => response.data)
+    },
+    logout() {
+        return instance.delete<ResponseType>('auth/login')
     }
-
 }
