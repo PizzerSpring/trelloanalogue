@@ -6,6 +6,7 @@ import headIcon from "../assets/images/head.png";
 import logoTrelloIcon from "../assets/images/logoTrello.png";
 import questionIcon from "../assets/images/question.png";
 import ProfileMenu from "./ProfileMenu";
+import BoardSettings from "./BoardSettings";
 
 const Header = styled.header`
   position: relative;
@@ -90,6 +91,7 @@ const WorkPageHeader = () => {
 
     const [menu, setMenu] = useState(false);
     const [menuBoard, setMenuBoard] = useState(false);
+    const [boardSettings, setBoardSettings] = useState(false);
 
     return (
         <Header>
@@ -100,7 +102,7 @@ const WorkPageHeader = () => {
                     </IconContainer>
                     <Title>Trello</Title>
                 </IconTitleContainer>
-                <WorkPageNav menuBoard={menuBoard} setMenuBoard={setMenuBoard}/>
+                <WorkPageNav menuBoard={menuBoard} setMenuBoard={setMenuBoard} boardSettings={boardSettings} setBoardSettings={setBoardSettings}/>
             </HeaderContainer>
             <ButtonContainer>
                 <Search type="text" placeholder="Поиск"/>
@@ -109,6 +111,7 @@ const WorkPageHeader = () => {
                 <ProfileImg onClick={() => {setMenu(!menu)}}></ProfileImg>
             </ButtonContainer>
             <ProfileMenu menu={menu}/>
+            <BoardSettings boardSettings={boardSettings} setBoardSettings={setBoardSettings} />
         </Header>
     );
 };

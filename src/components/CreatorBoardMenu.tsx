@@ -3,16 +3,19 @@ import styled from 'styled-components';
 import boardIcon from '../assets/images/boardImage.png';
 type CreatorBoardMenuTypes = {
     menuBoard: boolean
+    setMenuBoard: (value: boolean) => void
+    boardSettings: boolean
+    setBoardSettings: (value: boolean) => void
 }
 
 const BoardMenu = styled.div`
   cursor: pointer;
   position: absolute;
   top: 50px;
-  left: 670px;
+  left: 665px;
   z-index: 1;
   width: 290px;
-  height: 135px;
+  height: 120px;
   padding: 12px;
   background: #fff;
   box-shadow: var(--ds-shadow-overlay, 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08));
@@ -47,13 +50,16 @@ const BoardDescription = styled.div`
 const CreatorBoardMenu = (props: CreatorBoardMenuTypes) => {
     return (
         <>
-            {props.menuBoard && <BoardMenu>
+            {props.menuBoard && <BoardMenu onClick={() => {
+                props.setBoardSettings(!props.boardSettings);
+                props.setMenuBoard(!props.menuBoard);
+            }}>
                 <CreateBoard>
                     <BoardImg></BoardImg>
                     Создайте доску
                 </CreateBoard>
                 <BoardDescription>
-                    Доска представляет собой совокупность карточек, упорядоченных в списках.Используйте её для управления проектом, отслеживания или организации чего угодно.</BoardDescription>
+                    Доска представляет собой совокупность карточек, упорядоченных в списках. Используйте её для управления проектом, отслеживания или организации чего угодно.</BoardDescription>
             </BoardMenu>}
 
         </>

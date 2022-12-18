@@ -5,6 +5,8 @@ import CreatorBoardMenu from "./CreatorBoardMenu";
 type WorkPageNavTypes = {
     menuBoard: boolean
     setMenuBoard: (value: boolean) => void
+    boardSettings: boolean
+    setBoardSettings: (value: boolean) => void
 }
 
 const Nav = styled.nav`
@@ -56,7 +58,7 @@ const WorkPageNav = (props: WorkPageNavTypes) => {
                 </List>
 
             </Nav>
-            <CreatorBoardMenu menuBoard={props.menuBoard}/>
+            <CreatorBoardMenu menuBoard={props.menuBoard} boardSettings={props.boardSettings} setBoardSettings={props.setBoardSettings} setMenuBoard={props.setMenuBoard}/>
         </>
     );
 };
