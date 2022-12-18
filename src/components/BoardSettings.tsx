@@ -8,6 +8,8 @@ import pointerIcon from '../assets/images/pointerImage.png';
 type BoardSettingsTypes = {
     boardSettings: boolean
     setBoardSettings: (value: boolean) => void
+    menuBoard: boolean
+    setMenuBoard: (value: boolean) => void
 }
 
 const Settings = styled.div`
@@ -160,7 +162,10 @@ const BoardSettings = (props: BoardSettingsTypes) => {
         <>
             {props.boardSettings && <Settings>
                 <Header>
-                    <BackArrowImg></BackArrowImg>
+                    <BackArrowImg   onClick={() => {
+                        props.setBoardSettings(!props.boardSettings);
+                        props.setMenuBoard(!props.menuBoard);
+                    }}></BackArrowImg>
                     <HeaderTitle>Создать доску</HeaderTitle>
                     <CrossButtonImg  onClick={() => {props.setBoardSettings(!props.boardSettings)}}></CrossButtonImg>
                 </Header>
@@ -176,7 +181,7 @@ const BoardSettings = (props: BoardSettingsTypes) => {
                         <BoardPointerText>Укажите название доски</BoardPointerText>
                     </PointerContainer>
                 </BoardTitleContainer>
-                <ButtonCreate>Создать</ButtonCreate>
+                <ButtonCreate onClick={() => {props.setBoardSettings(!props.boardSettings)}}>Создать</ButtonCreate>
                 <Footer>
                     Используя изображения с сайта Unsplash вы принимаете его
                     <LinkA href="#"> Условия использоания</LinkA> и

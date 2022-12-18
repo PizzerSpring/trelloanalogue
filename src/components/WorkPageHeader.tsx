@@ -111,7 +111,7 @@ const WorkPageHeader = () => {
                 <ProfileImg onClick={() => {setMenu(!menu)}}></ProfileImg>
             </ButtonContainer>
             <ProfileMenu menu={menu}/>
-            <BoardSettings boardSettings={boardSettings} setBoardSettings={setBoardSettings} />
+            <BoardSettings menuBoard={menuBoard} setMenuBoard={setMenuBoard} boardSettings={boardSettings} setBoardSettings={setBoardSettings} />
         </Header>
     );
 };
