@@ -68,6 +68,7 @@ const AccountLine = styled.hr`
 `
 const AccountList = styled.ul`
     list-style-type: none;
+  
 `
 const Link = styled.li`
 `

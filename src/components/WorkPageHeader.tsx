@@ -89,6 +89,7 @@ const Question = styled.span`
 const WorkPageHeader = () => {
 
     const [menu, setMenu] = useState(false);
+    const [menuBoard, setMenuBoard] = useState(false);
 
     return (
         <Header>
@@ -99,7 +100,7 @@ const WorkPageHeader = () => {
                     </IconContainer>
                     <Title>Trello</Title>
                 </IconTitleContainer>
-                <WorkPageNav/>
+                <WorkPageNav menuBoard={menuBoard} setMenuBoard={setMenuBoard}/>
             </HeaderContainer>
             <ButtonContainer>
                 <Search type="text" placeholder="Поиск"/>
