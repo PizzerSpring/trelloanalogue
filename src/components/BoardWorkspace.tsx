@@ -116,7 +116,7 @@ const AddCardTitle = styled.div`
 
 const BoardWorkspace = () => {
     const [selected, setSelected] = useState<boolean>(false);
-    const [element, setElement] = useState('');
+    const [element, setElement] = useState<string>('');
 
     const boards = useSelector<RootStateType, Array<BoardType>>((state) => state.boards);
 
@@ -136,7 +136,9 @@ const BoardWorkspace = () => {
                     <ButtonImg></ButtonImg>
                 </Title>
                     <Board>
-                        {boards.map(b => <BoardText key={b.id} onClick={() => {
+                        {boards.map(b => <BoardText style={{
+                            background: `${b.title === element ? '#9c8e9a' : ''}`
+                        }} key={b.id} onClick={() => {
                             setSelected(!selected);
                             setElement(b.title)
                         }}>
