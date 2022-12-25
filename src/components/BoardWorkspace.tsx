@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import WorkPageHeader from "./WorkPageHeader";
 import plusIcon from '../assets/images/plusAdd.png';
@@ -62,7 +62,10 @@ const Board = styled.div`
 `
 const BoardText = styled.div`
     cursor: pointer;
-    margin-bottom: 5px;
+    padding: 5px;
+    &:hover {
+      background: #9c8e9a;
+    }
 `
 const MyBoardTitle = styled.h2`
   font-size: 18px;
@@ -112,6 +115,9 @@ const AddCardTitle = styled.div`
 `
 
 const BoardWorkspace = () => {
+    const [selected, setSelected] = useState<boolean>(false);
+    const [element, setElement] = useState('');
+
     const boards = useSelector<RootStateType, Array<BoardType>>((state) => state.boards);
 
     const dispatch = useTypedDispatch();
@@ -130,13 +136,16 @@ const BoardWorkspace = () => {
                     <ButtonImg></ButtonImg>
                 </Title>
                     <Board>
-                        {boards.map(b => <BoardText key={b.id}>
+                        {boards.map(b => <BoardText key={b.id} onClick={() => {
+                            setSelected(!selected);
+                            setElement(b.title)
+                        }}>
                             {b.title}
                         </BoardText>)}
                     </Board>
             </MyBoards>
             <Cards>
-                <MyBoardTitle>todo</MyBoardTitle>
+                <MyBoardTitle>{element}</MyBoardTitle>
                 <NeedToDo>
                     <NeedToDoTitle>Нужно сделать</NeedToDoTitle>
                     <AddCard>
