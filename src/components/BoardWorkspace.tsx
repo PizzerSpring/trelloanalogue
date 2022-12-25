@@ -148,13 +148,15 @@ const BoardWorkspace = () => {
             </MyBoards>
             <Cards>
                 <MyBoardTitle>{element}</MyBoardTitle>
-                <NeedToDo>
-                    <NeedToDoTitle>Нужно сделать</NeedToDoTitle>
-                    <AddCard>
-                        <AddCardIcon></AddCardIcon>
-                        <AddCardTitle>Добавить карточку</AddCardTitle>
-                    </AddCard>
-                </NeedToDo>
+                {element &&
+                    <NeedToDo>
+                        <NeedToDoTitle>Нужно сделать</NeedToDoTitle>
+                        <AddCard>
+                            <AddCardIcon></AddCardIcon>
+                            <AddCardTitle>Добавить карточку</AddCardTitle>
+                        </AddCard>
+                    </NeedToDo>}
+
             </Cards>
         </BoardWorkSpaceContainer>
         </>
