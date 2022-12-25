@@ -41,5 +41,9 @@ export const boardsApi = {
     createBoard(title: string) {
         return instance.post<ResponseType<{item: BoardType}>>('todo-lists', {title})
             .then(response => response.data)
+    },
+    getBoards() {
+        return instance.get<Array<BoardType>>('todo-lists')
+            .then(response => response.data)
     }
 }

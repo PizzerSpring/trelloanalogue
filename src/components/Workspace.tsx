@@ -16,8 +16,6 @@ const WorkSpaceContainer = styled.div`
 const Workspace = () => {
     const isEmpty = useSelector<RootStateType, Array<BoardType>>((state) => state.boards);
 
-    console.log(isEmpty)
-
     if(isEmpty.length !== 0) {
         return <Navigate to={'/boards'}/>
     }
