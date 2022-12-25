@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from "axios";
+import {BoardType} from "./boards-reducer";
 
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.1/',
@@ -33,5 +34,12 @@ export const authApi = {
     },
     logout() {
         return instance.delete<ResponseType>('auth/login')
+    }
+}
+
+export const boardsApi = {
+    createBoard(title: string) {
+        return instance.post<ResponseType<{item: BoardType}>>('todo-lists', {title})
+            .then(response => response.data)
     }
 }

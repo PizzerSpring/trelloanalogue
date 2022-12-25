@@ -10,6 +10,7 @@ import {HashRouter, Routes, Route, Navigate} from "react-router-dom";
 import AppContainer from "./components/AppContainer";
 import {useSelector} from "react-redux";
 import {RootStateType} from "./redux/store";
+import BoardWorkspace from "./components/BoardWorkspace";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route path={'/'} element={<AppContainer/>}/>
               <Route path={'/login'} element={<Login/>}/>
               <Route path={'/work'} element={<WorkContainer/>}/>
+              <Route path={'/boards'} element={<BoardWorkspace/>}/>
           </Routes>
       </HashRouter>
       {/*<Header/>

@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import ProfileMenu from "./ProfileMenu";
+import {useSelector} from "react-redux";
+import {RootStateType} from "../redux/store";
+import {BoardType} from "../redux/boards-reducer";
+import {Navigate} from "react-router-dom";
 
 const WorkSpaceContainer = styled.div`
   position: relative;
@@ -10,6 +14,13 @@ const WorkSpaceContainer = styled.div`
 
 
 const Workspace = () => {
+    const isEmpty = useSelector<RootStateType, Array<BoardType>>((state) => state.boards);
+
+    console.log(isEmpty)
+
+    if(isEmpty.length !== 0) {
+        return <Navigate to={'/boards'}/>
+    }
     return (
         <WorkSpaceContainer>
 

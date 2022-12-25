@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import styled from 'styled-components';
 import arrowLeftIcon from '../assets/images/arrowleftImage.png';
 import crossIcon from  '../assets/images/crossImage.png';
 import backgroundBoardIcon from  '../assets/images/backgroundBoardImage.png';
 import pointerIcon from '../assets/images/pointerImage.png';
+import {useTypedDispatch} from "../redux/store";
+import {createBoard} from "../redux/redux-thunks";
 
 type BoardSettingsTypes = {
     boardSettings: boolean
@@ -158,6 +160,8 @@ const LinkA = styled.a`
 
 
 const BoardSettings = (props: BoardSettingsTypes) => {
+    const [title, setTitle] = useState('');
+    const dispatch = useTypedDispatch();
     return (
         <>
             {props.boardSettings && <Settings>
@@ -175,13 +179,19 @@ const BoardSettings = (props: BoardSettingsTypes) => {
                 </BackgroundBoardImgContainer>
                 <BoardTitleContainer>
                     <BoardTitle>Заголовок доски</BoardTitle>
-                    <InputTitle/>
+                    <InputTitle type='text' value={title} onChange={(e:ChangeEvent<HTMLInputElement>) => {
+                        setTitle(e.currentTarget.value);
+                    }
+                    }/>
                     <PointerContainer>
                         <BoardPointerImg></BoardPointerImg>
                         <BoardPointerText>Укажите название доски</BoardPointerText>
                     </PointerContainer>
                 </BoardTitleContainer>
-                <ButtonCreate onClick={() => {props.setBoardSettings(!props.boardSettings)}}>Создать</ButtonCreate>
+                <ButtonCreate onClick={() => {
+                    props.setBoardSettings(!props.boardSettings);
+                    dispatch(createBoard(title));
+                }}>Создать</ButtonCreate>
                 <Footer>
                     Используя изображения с сайта Unsplash вы принимаете его
                     <LinkA href="#"> Условия использоания</LinkA> и
