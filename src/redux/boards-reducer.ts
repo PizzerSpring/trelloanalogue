@@ -1,7 +1,8 @@
 
 export type BoardsActionsTypes =
     ReturnType<typeof boardCreate> |
-    ReturnType<typeof setBoards>;
+    ReturnType<typeof setBoards> |
+    ReturnType<typeof deleteBoard>
 
 export type BoardType = {
     id: string,
@@ -16,6 +17,9 @@ export const boardsReducer = (state:  Array<BoardType> = initialState, action: B
     switch (action.type) {
         case "CREATE-BOARD": {
             return [...state, {...action.board}];
+        }
+        case 'DELETE-BOARD': {
+            return state.filter(b => b.id !== action.boardId);
         }
         case 'SET-BOARDS': {
             return action.boards.map(tl => {
@@ -33,3 +37,5 @@ export const boardsReducer = (state:  Array<BoardType> = initialState, action: B
 export const boardCreate = (board: BoardType) => ({type: 'CREATE-BOARD', board, boardId: board.id} as const)
 
 export const setBoards = (boards: Array<BoardType>) => ({type: 'SET-BOARDS', boards} as const)
+
+export const deleteBoard = (boardId: string) => ({type: 'DELETE-BOARD', boardId} as const)

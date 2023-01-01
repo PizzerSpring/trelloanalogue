@@ -5,7 +5,7 @@ import plusIcon from '../assets/images/plusAdd.png';
 import {useSelector} from "react-redux";
 import {BoardType} from "../redux/boards-reducer";
 import {RootStateType, useTypedDispatch} from "../redux/store";
-import {getBoards} from "../redux/redux-thunks";
+import {deleteBoard, getBoards} from "../redux/redux-thunks";
 
 const BoardWorkSpaceContainer = styled.div`
     display: flex;
@@ -59,6 +59,21 @@ const Board = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+`
+const BoardTextContainer = styled.div`
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+const BoardTextDeleteIcon = styled.span`
+  cursor: pointer;
+  display: inline-block;
+  background: url(${plusIcon});
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 14px;
+  height: 14px;
+  transform: rotate(45deg);
 `
 const BoardText = styled.div`
     cursor: pointer;
@@ -136,26 +151,29 @@ const BoardWorkspace = () => {
                     <ButtonImg></ButtonImg>
                 </Title>
                     <Board>
-                        {boards.map(b => <BoardText style={{
-                            background: `${b.title === element ? '#9c8e9a' : ''}`
-                        }} key={b.id} onClick={() => {
-                            setSelected(!selected);
-                            setElement(b.title)
-                        }}>
-                            {b.title}
-                        </BoardText>)}
+                        {boards.map(b => <BoardTextContainer key={b.id}>
+                            <BoardText>{b.title}</BoardText>
+                            <BoardTextDeleteIcon onClick={() => {
+                                dispatch(deleteBoard(b.id));
+                            }}></BoardTextDeleteIcon>
+                            </BoardTextContainer>
+                        )}
                     </Board>
             </MyBoards>
             <Cards>
                 <MyBoardTitle>{element}</MyBoardTitle>
-                {element &&
-                    <NeedToDo>
+                {boards.map(b =>
+                    <>
+                        <BoardText>{b.title}</BoardText>
+                            <NeedToDo key={b.id}>
                         <NeedToDoTitle>Нужно сделать</NeedToDoTitle>
                         <AddCard>
                             <AddCardIcon></AddCardIcon>
                             <AddCardTitle>Добавить карточку</AddCardTitle>
                         </AddCard>
-                    </NeedToDo>}
+                    </NeedToDo>
+                    </>
+                )}
 
             </Cards>
         </BoardWorkSpaceContainer>

@@ -45,5 +45,9 @@ export const boardsApi = {
     getBoards() {
         return instance.get<Array<BoardType>>('todo-lists')
             .then(response => response.data)
+    },
+    deleteBoard(boardId: string) {
+        return instance.delete<ResponseType>(`todo-lists/${boardId}`)
+            .then(response => response.data)
     }
 }

@@ -1,9 +1,11 @@
 import {authApi, boardsApi, LoginParamsType} from "./api";
 import {setLogin} from "./auth-reducer";
 import {Dispatch} from "redux";
-import {boardCreate, setBoards} from "./boards-reducer";
+import {boardCreate, BoardsActionsTypes, setBoards} from "./boards-reducer";
 import {Simulate} from "react-dom/test-utils";
 import seeked = Simulate.seeked;
+import {ThunkDispatch} from "redux-thunk";
+import {RootStateType} from "./store";
 
 export const login = (data: LoginParamsType) => {
     return (dispatch: Dispatch) => {
@@ -40,6 +42,15 @@ export const getBoards = () => {
         boardsApi.getBoards()
             .then((data) => {
                 dispatch(setBoards(data))
+            })
+    }
+}
+
+export const deleteBoard = (boardId: string) => {
+    return (dispatch: ThunkDispatch<RootStateType, typeof boardId, BoardsActionsTypes>) => {
+        boardsApi.deleteBoard(boardId)
+            .then(() => {
+                dispatch(deleteBoard(boardId))
             })
     }
 }
