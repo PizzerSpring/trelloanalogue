@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import boardIcon from '../assets/images/boardImage.png';
+import boardIcon from '../../../../../assets/images/boardImage.png';
 type CreatorBoardMenuTypes = {
     menuBoard: boolean
     setMenuBoard: (value: boolean) => void

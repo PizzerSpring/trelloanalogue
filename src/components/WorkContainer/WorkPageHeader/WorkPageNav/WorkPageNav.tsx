@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import CreatorBoardMenu from "./CreatorBoardMenu";
+import CreatorBoardMenu from "./CreatorBoardMenu/CreatorBoardMenu";
 
 type WorkPageNavTypes = {
     menuBoard: boolean

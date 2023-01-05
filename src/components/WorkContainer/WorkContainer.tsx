@@ -1,6 +1,6 @@
 import React from 'react';
-import WorkPageHeader from "./WorkPageHeader";
-import Workspace from "./Workspace";
+import WorkPageHeader from "./WorkPageHeader/WorkPageHeader";
+import Workspace from "./Workspace/Workspace";
 
 const WorkContainer = () => {
     return (

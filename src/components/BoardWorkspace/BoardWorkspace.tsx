@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import WorkPageHeader from "./WorkPageHeader";
-import plusIcon from '../assets/images/plusAdd.png';
+import WorkPageHeader from "../WorkContainer/WorkPageHeader/WorkPageHeader";
+import plusIcon from '../../assets/images/plusAdd.png';
 import {useSelector} from "react-redux";
-import {BoardType} from "../redux/boards-reducer";
-import {RootStateType, useTypedDispatch} from "../redux/store";
-import {deleteBoard, getBoards} from "../redux/redux-thunks";
+import {BoardType} from "../../redux/boards-reducer";
+import {RootStateType, useTypedDispatch} from "../../redux/store";
+import {deleteBoard, getBoards} from "../../redux/redux-thunks";
 
 const BoardWorkSpaceContainer = styled.div`
     display: flex;
@@ -140,7 +140,6 @@ const BoardWorkspace = () => {
     useEffect(() => {
         dispatch(getBoards())
     })
-    console.log(boards)
     return (
         <>
             <WorkPageHeader/>

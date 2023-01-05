@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import {useSelector} from "react-redux";
-import {RootStateType, useTypedDispatch} from "../redux/store";
+import {RootStateType, useTypedDispatch} from "../../../../redux/store";
 import {Navigate} from "react-router-dom";
-import {logout} from "../redux/redux-thunks";
-import headIcon from "../assets/images/head.png";
+import {logout} from "../../../../redux/redux-thunks";
+import headIcon from "../../../../assets/images/head.png";
 
 type ProfileMenuTypes = {
     menu: boolean

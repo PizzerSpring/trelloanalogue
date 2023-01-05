@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import WorkPageNav from "./WorkPageNav";
-import bellIcon from "../assets/images/bell.png";
-import headIcon from "../assets/images/head.png";
-import logoTrelloIcon from "../assets/images/logoTrello.png";
-import questionIcon from "../assets/images/question.png";
-import ProfileMenu from "./ProfileMenu";
-import BoardSettings from "./BoardSettings";
+import WorkPageNav from "./WorkPageNav/WorkPageNav";
+import bellIcon from "../../../assets/images/bell.png";
+import headIcon from "../../../assets/images/head.png";
+import logoTrelloIcon from "../../../assets/images/logoTrello.png";
+import questionIcon from "../../../assets/images/question.png";
+import ProfileMenu from "./ProfileMenu/ProfileMenu";
+import BoardSettings from "./BoardSettings/BoardSettings";
 
 const Header = styled.header`
   position: relative;

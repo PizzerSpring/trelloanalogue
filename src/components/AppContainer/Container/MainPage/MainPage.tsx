@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import backgroundIcon from '../assets/images/backgroundHome.png';
-import arrowIcon from '../assets/images/playIcon.png';
+import backgroundIcon from '../../../../assets/images/backgroundHome.png';
+import arrowIcon from '../../../../assets/images/playIcon.png';
 
 
 const BackgroundImg = styled.div`

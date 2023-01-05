@@ -1,16 +1,16 @@
 import React from 'react';
 import './App.css';
-import Header from "./components/HeaderNav";
-import Container from "./components/Container";
-import Login from "./components/Login";
-import WorkPageHeader from "./components/WorkPageHeader";
-import Workspace from "./components/Workspace";
-import WorkContainer from "./components/WorkContainer";
+import Header from "./components/AppContainer/Header/Header";
+import Container from "./components/AppContainer/Container/Container";
+import Login from "./components/Login/Login";
+import WorkPageHeader from "./components/WorkContainer/WorkPageHeader/WorkPageHeader";
+import Workspace from "./components/WorkContainer/Workspace/Workspace";
+import WorkContainer from "./components/WorkContainer/WorkContainer";
 import {HashRouter, Routes, Route, Navigate} from "react-router-dom";
-import AppContainer from "./components/AppContainer";
+import AppContainer from "./components/AppContainer/AppContainer";
 import {useSelector} from "react-redux";
 import {RootStateType} from "./redux/store";
-import BoardWorkspace from "./components/BoardWorkspace";
+import BoardWorkspace from "./components/BoardWorkspace/BoardWorkspace";
 
 function App() {
   return (

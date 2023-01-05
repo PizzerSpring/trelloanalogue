@@ -1,11 +1,11 @@
 import React, {ChangeEvent, useState} from 'react';
 import styled from 'styled-components';
-import arrowLeftIcon from '../assets/images/arrowleftImage.png';
-import crossIcon from  '../assets/images/crossImage.png';
-import backgroundBoardIcon from  '../assets/images/backgroundBoardImage.png';
-import pointerIcon from '../assets/images/pointerImage.png';
-import {useTypedDispatch} from "../redux/store";
-import {createBoard} from "../redux/redux-thunks";
+import arrowLeftIcon from '../../../../assets/images/arrowleftImage.png';
+import crossIcon from '../../../../assets/images/crossImage.png';
+import backgroundBoardIcon from '../../../../assets/images/backgroundBoardImage.png';
+import pointerIcon from '../../../../assets/images/pointerImage.png';
+import {useTypedDispatch} from "../../../../redux/store";
+import {createBoard} from "../../../../redux/redux-thunks";
 
 type BoardSettingsTypes = {
     boardSettings: boolean

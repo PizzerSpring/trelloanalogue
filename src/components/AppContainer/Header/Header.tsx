@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Navigation from "./Navigation";
-import iconTrello from '../assets/images/icontrello.png';
+import Navigation from "./Navigation/Navigation";
+import iconTrello from '../../../assets/images/icontrello.png';
 import {NavLink} from "react-router-dom";
 
 const HeaderNav = styled.header`

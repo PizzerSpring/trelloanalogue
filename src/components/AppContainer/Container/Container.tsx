@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainPage from "./MainPage";
+import MainPage from "./MainPage/MainPage";
 
 const CommonContainer = styled.div`
     display: flex;
