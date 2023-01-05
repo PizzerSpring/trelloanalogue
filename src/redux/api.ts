@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import {BoardType} from "./boards-reducer";
+import {TaskType} from "./tasks-reducer";
 
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.1/',
@@ -14,6 +15,12 @@ type ResponseType<D = {}> = {
     resultCode: number
     messages: Array<string>
     data: D
+}
+
+type GetTaskType = {
+    totalCount: number
+    error: string | null
+    items: Array<TaskType>
 }
 
 export type LoginParamsType = {
@@ -48,6 +55,13 @@ export const boardsApi = {
     },
     deleteBoard(boardId: string) {
         return instance.delete<ResponseType>(`todo-lists/${boardId}`)
+            .then(response => response.data)
+    }
+}
+
+export const tasksApi = {
+    getTasks(boardId: string) {
+        return instance.get<GetTaskType>(`todo-lists/${boardId}/tasks`)
             .then(response => response.data)
     }
 }

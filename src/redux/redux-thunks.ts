@@ -1,4 +1,4 @@
-import {authApi, boardsApi, LoginParamsType} from "./api";
+import {authApi, boardsApi, LoginParamsType, tasksApi} from "./api";
 import {setLogin} from "./auth-reducer";
 import {Dispatch} from "redux";
 import {boardCreate, BoardsActionsTypes, setBoards} from "./boards-reducer";
@@ -6,6 +6,7 @@ import {Simulate} from "react-dom/test-utils";
 import seeked = Simulate.seeked;
 import {ThunkDispatch} from "redux-thunk";
 import {RootStateType} from "./store";
+import {setTasks} from "./tasks-reducer";
 
 export const login = (data: LoginParamsType) => {
     return (dispatch: Dispatch) => {
@@ -35,6 +36,15 @@ export const createBoard = (title: string) => {
                 dispatch(boardCreate(board));
             })
     }
+}
+
+export const getTasks = (boardId: string) => {
+     return (dispatch: Dispatch) => {
+         tasksApi.getTasks(boardId)
+             .then((data) => {
+                 dispatch(setTasks(boardId, data.items));
+             })
+     }
 }
 
 export const getBoards = () => {

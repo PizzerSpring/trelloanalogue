@@ -6,24 +6,25 @@ import {useSelector} from "react-redux";
 import {BoardType} from "../../redux/boards-reducer";
 import {RootStateType, useTypedDispatch} from "../../redux/store";
 import {deleteBoard, getBoards} from "../../redux/redux-thunks";
+import Tasks from "./Tasks/Tasks";
 
 const BoardWorkSpaceContainer = styled.div`
-    display: flex;
+  display: flex;
 `
 const MyBoards = styled.div`
   border-right: #9B8E9A 2px;
   flex-basis: 20%;
-    background: #b6a7b6;
+  background: #b6a7b6;
   min-height: 100vh;
   padding: 10px;
 `
 const Cards = styled.div`
   flex-basis: 80%;
-  background:  #746d8c;
+  background: #746d8c;
   padding: 10px;
 `
 const Title = styled.div`
-    display: flex;
+  display: flex;
   margin-bottom: 15px;
 `
 const TitleText = styled.h3`
@@ -40,9 +41,9 @@ const TitleText = styled.h3`
 `
 const ButtonImg = styled.button`
   cursor: pointer;
-    display: inline-block;
+  display: inline-block;
   border: none;
-    background: url(${plusIcon});
+  background: url(${plusIcon});
   background-size: cover;
   background-repeat: no-repeat;
   width: 14px;
@@ -61,7 +62,7 @@ const Board = styled.div`
   white-space: nowrap;
 `
 const BoardTextContainer = styled.div`
-    display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 `
@@ -76,11 +77,12 @@ const BoardTextDeleteIcon = styled.span`
   transform: rotate(45deg);
 `
 const BoardText = styled.div`
-    cursor: pointer;
-    padding: 5px;
-    &:hover {
-      background: #9c8e9a;
-    }
+  cursor: pointer;
+  padding: 5px;
+
+  &:hover {
+    background: #9c8e9a;
+  }
 `
 const MyBoardTitle = styled.h2`
   font-size: 18px;
@@ -102,14 +104,14 @@ const NeedToDo = styled.div`
   padding: 10px;
 `
 const NeedToDoTitle = styled.div`
-    font-size: 16px;
+  font-size: 16px;
   color: #172b4d;
   font-weight: 600;
   line-height: 24px;
 `
 const AddCard = styled.div`
   margin-top: 10px;
-    display: flex;
+  display: flex;
   align-items: center;
 `
 const AddCardIcon = styled.span`
@@ -126,7 +128,9 @@ const AddCardIcon = styled.span`
 const AddCardTitle = styled.div`
   cursor: pointer;
   display: inline-block;
-    color: #5e6c84;
+  color: #5e6c84;
+`
+const TaskContainer = styled.div`
 `
 
 const BoardWorkspace = () => {
@@ -139,43 +143,46 @@ const BoardWorkspace = () => {
 
     useEffect(() => {
         dispatch(getBoards())
-    })
+    }, [])
     return (
         <>
             <WorkPageHeader/>
-        <BoardWorkSpaceContainer>
-            <MyBoards>
-                <Title>
-                    <TitleText>Мои доски</TitleText>
-                    <ButtonImg></ButtonImg>
-                </Title>
+            <BoardWorkSpaceContainer>
+                <MyBoards>
+                    <Title>
+                        <TitleText>Мои доски</TitleText>
+                        <ButtonImg></ButtonImg>
+                    </Title>
                     <Board>
                         {boards.map(b => <BoardTextContainer key={b.id}>
-                            <BoardText>{b.title}</BoardText>
-                            <BoardTextDeleteIcon onClick={() => {
-                                dispatch(deleteBoard(b.id));
-                            }}></BoardTextDeleteIcon>
+                                <BoardText>{b.title}</BoardText>
+                                <BoardTextDeleteIcon onClick={() => {
+                                    dispatch(deleteBoard(b.id));
+                                }}></BoardTextDeleteIcon>
                             </BoardTextContainer>
                         )}
                     </Board>
-            </MyBoards>
-            <Cards>
-                <MyBoardTitle>{element}</MyBoardTitle>
-                {boards.map(b =>
-                    <>
-                        <BoardText>{b.title}</BoardText>
+                </MyBoards>
+                <Cards>
+                    <MyBoardTitle>{element}</MyBoardTitle>
+                    {boards.map(b =>
+                        <>
+                            <BoardText>{b.title}</BoardText>
                             <NeedToDo key={b.id}>
-                        <NeedToDoTitle>Нужно сделать</NeedToDoTitle>
-                        <AddCard>
-                            <AddCardIcon></AddCardIcon>
-                            <AddCardTitle>Добавить карточку</AddCardTitle>
-                        </AddCard>
-                    </NeedToDo>
-                    </>
-                )}
+                                <NeedToDoTitle>Нужно сделать</NeedToDoTitle>
+                                <AddCard>
+                                    <AddCardIcon></AddCardIcon>
+                                    <AddCardTitle>Добавить карточку</AddCardTitle>
+                                </AddCard>
+                                <TaskContainer>
+                                    <Tasks key={b.id} board={b}/>
+                                </TaskContainer>
+                            </NeedToDo>
+                        </>
+                    )}
 
-            </Cards>
-        </BoardWorkSpaceContainer>
+                </Cards>
+            </BoardWorkSpaceContainer>
         </>
     );
 };
