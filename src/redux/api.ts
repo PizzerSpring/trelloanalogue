@@ -67,5 +67,9 @@ export const tasksApi = {
     createTask(boardId: string,title: string) {
         return instance.post<ResponseType<{item: TaskType}>>(`todo-lists/${boardId}/tasks`, {title})
             .then(response => response.data)
+    },
+    deleteTask(boardId: string, taskId: string) {
+        return instance.delete<ResponseType>(`todo-lists/${boardId}/tasks/${taskId}`)
+            .then(response => response.data)
     }
 }

@@ -6,7 +6,7 @@ import {Simulate} from "react-dom/test-utils";
 import seeked = Simulate.seeked;
 import {ThunkDispatch} from "redux-thunk";
 import {RootStateType} from "./store";
-import {setTasks, taskCreate} from "./tasks-reducer";
+import {setTasks, taskCreate, taskDelete} from "./tasks-reducer";
 
 export const login = (data: LoginParamsType) => {
     return (dispatch: Dispatch) => {
@@ -45,6 +45,15 @@ export const createTask = (boardId: string, title: string) => {
                 const task = data.data.item;
                 dispatch(taskCreate(task));
 
+            })
+    }
+}
+
+export const deleteTask = (boardId: string, taskId: string) => {
+    return (dispatch: Dispatch) => {
+        tasksApi.deleteTask(boardId, taskId)
+            .then(() => {
+                taskDelete(boardId, taskId);
             })
     }
 }
