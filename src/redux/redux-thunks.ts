@@ -6,7 +6,7 @@ import {Simulate} from "react-dom/test-utils";
 import seeked = Simulate.seeked;
 import {ThunkDispatch} from "redux-thunk";
 import {RootStateType} from "./store";
-import {setTasks} from "./tasks-reducer";
+import {setTasks, taskCreate} from "./tasks-reducer";
 
 export const login = (data: LoginParamsType) => {
     return (dispatch: Dispatch) => {
@@ -34,6 +34,17 @@ export const createBoard = (title: string) => {
             .then((data) => {
                 const board = data.data.item;
                 dispatch(boardCreate(board));
+            })
+    }
+}
+
+export const createTask = (boardId: string, title: string) => {
+    return (dispatch: Dispatch) => {
+        tasksApi.createTask(boardId, title)
+            .then((data) => {
+                const task = data.data.item;
+                dispatch(taskCreate(task));
+
             })
     }
 }

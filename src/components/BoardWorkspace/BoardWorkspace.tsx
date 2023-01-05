@@ -5,8 +5,9 @@ import plusIcon from '../../assets/images/plusAdd.png';
 import {useSelector} from "react-redux";
 import {BoardType} from "../../redux/boards-reducer";
 import {RootStateType, useTypedDispatch} from "../../redux/store";
-import {deleteBoard, getBoards} from "../../redux/redux-thunks";
+import {createTask, deleteBoard, getBoards} from "../../redux/redux-thunks";
 import Tasks from "./Tasks/Tasks";
+import EditableDiv from "./EditableDiv/EditableDiv";
 
 const BoardWorkSpaceContainer = styled.div`
   display: flex;
@@ -131,6 +132,14 @@ const AddCardTitle = styled.div`
   color: #5e6c84;
 `
 const TaskContainer = styled.div`
+  padding: 4px 8px 6px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: var(--ds-shadow-raised, 0 1px 0 #091e4240);
+  cursor: pointer;
+  margin-top: 8px;
+  max-width: 300px;
+  min-height: 30px;
 `
 
 const BoardWorkspace = () => {
@@ -140,6 +149,10 @@ const BoardWorkspace = () => {
     const boards = useSelector<RootStateType, Array<BoardType>>((state) => state.boards);
 
     const dispatch = useTypedDispatch();
+
+    const crTask = (boardId: string, title: string) => {
+        dispatch(createTask(boardId, title));
+    }
 
     useEffect(() => {
         dispatch(getBoards())
@@ -172,11 +185,11 @@ const BoardWorkspace = () => {
                                 <NeedToDoTitle>Нужно сделать</NeedToDoTitle>
                                 <AddCard>
                                     <AddCardIcon></AddCardIcon>
-                                    <AddCardTitle>Добавить карточку</AddCardTitle>
+                                    <EditableDiv createTask={(title: string) => {
+                                        crTask(b.id, title)
+                                    }}/>
                                 </AddCard>
-                                <TaskContainer>
-                                    <Tasks key={b.id} board={b}/>
-                                </TaskContainer>
+                                <Tasks key={b.id} board={b}/>
                             </NeedToDo>
                         </>
                     )}

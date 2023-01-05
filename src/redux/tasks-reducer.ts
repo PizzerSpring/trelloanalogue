@@ -2,7 +2,8 @@ import {setBoards} from "./boards-reducer";
 
 export type TaskActionTypes =
     ReturnType<typeof setTasks> |
-    ReturnType<typeof setBoards>;
+    ReturnType<typeof setBoards> |
+    ReturnType<typeof taskCreate>;
 
 
 export type allTaskType = {
@@ -30,6 +31,10 @@ let initialState: allTaskType = {
 
 export const tasksReducer = (state: allTaskType = initialState, action: TaskActionTypes): allTaskType => {
     switch (action.type) {
+        case "CREATE-TASK": {
+            const task = action.task;
+            return {...state, [task.todoListId]: [task, ...state[task.todoListId]]}
+        }
         case "SET-TASKS": {
             return {...state, [action.boardId]: action.tasks};
         }
@@ -48,3 +53,5 @@ export const tasksReducer = (state: allTaskType = initialState, action: TaskActi
 
 
 export const setTasks = (boardId: string, tasks: Array<TaskType>) => ({type: 'SET-TASKS', boardId, tasks} as const)
+
+export const taskCreate = (task: TaskType) => ({type: 'CREATE-TASK',task} as const)

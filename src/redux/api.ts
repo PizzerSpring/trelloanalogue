@@ -63,5 +63,9 @@ export const tasksApi = {
     getTasks(boardId: string) {
         return instance.get<GetTaskType>(`todo-lists/${boardId}/tasks`)
             .then(response => response.data)
+    },
+    createTask(boardId: string,title: string) {
+        return instance.post<ResponseType<{item: TaskType}>>(`todo-lists/${boardId}/tasks`, {title})
+            .then(response => response.data)
     }
 }
