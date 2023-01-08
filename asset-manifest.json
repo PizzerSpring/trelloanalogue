@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/github.io/trelloanalogue/static/css/main.ffe34ec7.css",
-    "main.js": "/github.io/trelloanalogue/static/js/main.05614b24.js",
-    "static/js/787.8ce35c4a.chunk.js": "/github.io/trelloanalogue/static/js/787.8ce35c4a.chunk.js",
-    "static/media/backgroundHome.png": "/github.io/trelloanalogue/static/media/backgroundHome.83ac8812e14bc4b15db8.png",
-    "static/media/bgLeftLogin.png": "/github.io/trelloanalogue/static/media/bgLeftLogin.833b40c0e24d37827a32.png",
-    "static/media/bgRightLogin.png": "/github.io/trelloanalogue/static/media/bgRightLogin.d6b8079301d90e11f0a3.png",
-    "static/media/playIcon.png": "/github.io/trelloanalogue/static/media/playIcon.6c4e37a998924668487a.png",
-    "static/media/backgroundBoardImage.png": "/github.io/trelloanalogue/static/media/backgroundBoardImage.397320621b98404cc8da.png",
-    "index.html": "/github.io/trelloanalogue/index.html",
-    "main.ffe34ec7.css.map": "/github.io/trelloanalogue/static/css/main.ffe34ec7.css.map",
-    "main.05614b24.js.map": "/github.io/trelloanalogue/static/js/main.05614b24.js.map",
-    "787.8ce35c4a.chunk.js.map": "/github.io/trelloanalogue/static/js/787.8ce35c4a.chunk.js.map"
+    "main.css": "/trelloanalogue/static/css/main.ffe34ec7.css",
+    "main.js": "/trelloanalogue/static/js/main.e0f61cf6.js",
+    "static/js/787.8ce35c4a.chunk.js": "/trelloanalogue/static/js/787.8ce35c4a.chunk.js",
+    "static/media/backgroundHome.png": "/trelloanalogue/static/media/backgroundHome.83ac8812e14bc4b15db8.png",
+    "static/media/bgLeftLogin.png": "/trelloanalogue/static/media/bgLeftLogin.833b40c0e24d37827a32.png",
+    "static/media/bgRightLogin.png": "/trelloanalogue/static/media/bgRightLogin.d6b8079301d90e11f0a3.png",
+    "static/media/playIcon.png": "/trelloanalogue/static/media/playIcon.6c4e37a998924668487a.png",
+    "static/media/backgroundBoardImage.png": "/trelloanalogue/static/media/backgroundBoardImage.397320621b98404cc8da.png",
+    "index.html": "/trelloanalogue/index.html",
+    "main.ffe34ec7.css.map": "/trelloanalogue/static/css/main.ffe34ec7.css.map",
+    "main.e0f61cf6.js.map": "/trelloanalogue/static/js/main.e0f61cf6.js.map",
+    "787.8ce35c4a.chunk.js.map": "/trelloanalogue/static/js/787.8ce35c4a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ffe34ec7.css",
-    "static/js/main.05614b24.js"
+    "static/js/main.e0f61cf6.js"
   ]
 }
